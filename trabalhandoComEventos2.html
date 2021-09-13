@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        /* selecionar o item */
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+
+        /* tratando o evento onmousemove (mecher com o mouse) */
+        item.onmousemove = e => {
+            const item = e.target/* é a minha div que disparou o evento */
+            item.style.cursor = 'move'/* quando passar em cima do elemento vai aparecer o cursor de mover */
+            /* so quero mover o elemento quando eu clicar e arrastar */
+            if (e.buttons) {/* se estiver diferente de 0 é que alguem clicou no mouse */
+                /* e = evento que eu recebi 
+                e.target => quem disparou o evento(o tipo do evento)
+                e.clienty => pegar o eixo vertical
+                (item.clientHeight/2) => menos a altura que a div esta divida por 2
+                */
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

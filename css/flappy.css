@@ -1,0 +1,65 @@
+*{
+    box-sizing: border-box;
+}
+
+/* importando uma fonte (vai ser a fonte do score do usuario */
+@font-face{
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf');/* local onde esta a fonte */
+}
+
+/* estilo para qualquer coisa que tenha essa propriedade */
+[wm-flappy] {
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color: deepskyblue;
+    overflow: hidden; /* qualquer coisa que estiver fora não irá aparecer */
+}
+
+/* definindo o css do passaro */
+.passaro{
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px);/* vai estar relativo a esquerda */
+    bottom: 50%;/* posicionando também em relação ao fundo */
+}
+
+.par-de-barreiras{
+    position: absolute;
+    top: 0; /* alinahdo com o topo da area do jogo */
+    height: 100%;
+    display: flex;
+    flex-direction: column; /* vou organizar por coluna */
+    justify-content: space-between;
+}
+
+.barreira{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barreira .borda{
+    height: 30px;
+    width: 130px;
+    background-color: linear-gradient(90deg, #639301, #a5e82e);
+    border: 2ps solid #000;
+}
+
+.barreira .corpo{
+    height: 40px;
+    width: 110px;
+    background-color: linear-gradient(90deg, #639301, #a5e82e);
+    border-left: 2px solid #000;/* bordana lateral esquerda */
+    border-right: 2px solid #000;/* bordana lateral direita */
+}
+.progresso{
+    position: absolute;
+    top: 10px;
+    right: 10px;/* alinhado a direita */
+    font-family: Pixel;
+    font-size: 70px;
+}

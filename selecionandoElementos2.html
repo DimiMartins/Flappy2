@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+    /* query selector espera um seletor css por tem que ESPECIFICAR
+    SE É CLASSE OU ID */
+    /* peguei o id primeiro e adicionei a classe destaque */
+        document.querySelector('#primeiro').classList.add('destaque')
+
+        /* FUNÇÃO PARA ADICIONAR E REMOVER A CLASSE DESTAQUE) */
+        const selecionar = seletor => 
+            document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))
+        /* QUERY SELECTOR ALL RETORNA UMA NODELIST(LISTA DE ELEMENTOS) */
+        const deselecionar = seletor => 
+            document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))
+
+        /* selecionado todos que tem div */
+        selecionar('div')
+        /* deselecionar todos os elementos selecionados */
+        deselecionar('*')
+        /* selecionando todos que tem a classe terceiro e último */
+        selecionar('.terceiro.ultimo')
+        deselecionar('*')
+        /* TODOS QUE NÃO ESTIVERM MARCADOS COM O ID #PRIMEIRO SERÃO SELECIONADOS */
+        /* :not ==> um pseudoClasse */
+        selecionar(':not(#primeiro)')
+        deselecionar('*')
+        /* pegando o primeiro filho de algum elemento */
+        /* ira seleciona o 1º elemento depois do body e o span do 3 elemento(filho da div) */
+        selecionar(':nth-child(1)')
+        deselecionar('*')
+        /* vai selecionar um primeiro elemento de um determinado tipo, no caso a div */
+        selecionar('div:nth-of-type(1)')
+        deselecionar('*')
+        /* selecionar a partir de um atributo */
+        selecionar('[wb-attrib]')
+
+    </script>
+</body>
+</html>
+
+                        <!-- RESUMO -->
+<!-- Vimos que o querySelectorAll retorna um NODELIST, que ele tem a função forEach 
+porem NÃO TEM AS DEMAIS FUNÇÕES, é possível trasnformar em uma array da mesma forma 
+do html collection com Array.from() ou com o OPERADOR SPREED[...div] 
+
+Selecionamos id classe e atributo com o query selector all (fizemos uma função para
+ficar mais automatizado)  
+
+Vimos na pseudo-classe o :not (PEGA TODOS MENOS ESSE)
+:NTH-CHILD(1) ==> PEGA O PRIMEIRO FILHO(ELEMENTO) DE ALGUM ELEMENTO
+NomeDaTag:nth-of-type(1) ==> PEGA O PRIMEIRO ELEMENTO DE UMA TAG ESPECIFICA -->

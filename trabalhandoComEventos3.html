@@ -1,0 +1,86 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+        /* draginDrop ==> Jogar um elemento de um lado para outro */
+        
+        /* selecionando os itens que estão dentro de uma dropzone */
+        const itens = document.querySelectorAll('[wm-dropzone] .item')
+        /* vou pegar o item atual e o indice desse item */
+        itens.forEach((item, index) => {
+            /* transformando o elemento em algo que possa ser arrastado */
+            item.draggable = true
+            /* definindo que o item tem que ter um id */
+            item.id = item.id || `draggable-item-${index}`
+            /* associando o evento ondragstart, e dentro desse evento irei setar o data transfer*/
+            /* quando eu começar a arrastar o mouse ele vai setar o elemento
+             dataTrasfer*/
+            item.ondragstart = e => 
+                e.dataTransfer.setData('item-id', e.target.id)
+                /* wm-drapzone ira ser o local onde vou receber os elementos que irei arrastar */
+        })
+        /* vou selecionar todos que estiverem marcados com dropzone */
+        const dropzones = document.querySelectorAll('[wm-dropzone]')
+        dropzones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault()
+            /* evento de fato que eu quero tratar */
+            dropzone.ondrop = function (e) {
+                const id = e.dataTransfer.getData('item-id')
+                const item = document.getElementById(id)
+                /* e.target.appendChild(item) */
+                /* para uma div não entrar dentro da outra */
+                dropzone.appendChild(item)/* só vou adicionar o elemento dentro daquele elemento que foi marcado com dropzone */
+            }
+        })
+
+
+
+
+
+    </script>
+</body>
+
+</html>

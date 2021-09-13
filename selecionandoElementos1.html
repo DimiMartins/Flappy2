@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        /* funções tradicionais de como selecionar elementos a partir da dom */
+        /* PEGANDO UM ELEMENTO PELO ID *//* ja espera receber um id por isso não precisa do # */
+        document.getElementById('primeiro').classList.add('destaque')
+        /* TODOS OS ELEMENTOS COM A TEG DIV SERÃO SELECIONADOS */
+        const divs = document.getElementsByTagName('div')/* retorna uma lista */
+        /* TRASFORMAR UM HTML COLECCTION EM UM ARRAY */
+        /* peguei todas as divs, trasnformei num array vou percorrer cada um deles removendo a classe destaque*/
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))
+        /* OUTRA FORMA DE TRASFORMAR UM HTML COLLECTION EM UM ARRAY */
+        /* usando o operador spreed */
+        const divsArray = [...divs]
+        /* VOU APLICAR A CLASSE DISTAQUE PARA TODO MUNDO */
+        divsArray.forEach(e => e.classList.add('destaque'))
+
+        /* SELECIONANDO ELEMENTOS A PARTIR DA CLASSE( UMA CLASSE PODE SELECIONAR VÁRIOS ELEMENTOS) */
+        /* se tiver somente um elemento ira vir só um, se tiver varios vem os vários */
+        const ultimosElementos = document.getElementsByClassName('ultimo')
+        /* html collection é um iterator */
+        for (const e of ultimosElementos) {
+            e.classList.remove('destaque')
+        }
+
+    </script>
+</body>
+</html>
+
+                        <!--RESUMO  -->
+<!-- Vimos 3 formas de selecionar elementos: PELO ID COM document.getElementById('primeiro')
+ PELO NOME DA TAG COM document.getElementsByTagName('div')
+ PELO NOME DA CLASSE COM document.getElementsByClassName('ultimo')
+
+Vi duas formas de trasformar um html colection em um array 
+com ARRAY.FROM e usando o OPERADOR SPREED [...divs]
+
+o html collection por ser um ITERATOR é possivel fazer alterações nele
+usando o forOf-->

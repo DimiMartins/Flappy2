@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        /* vou pega uma div, que tem uma ul que tem o atributo destino = a escritorio 
+        o ideal seria usar o id*/
+        const lista = document.querySelector('div ul[destino="escritorio"]')
+        console.log('Elemento "ul" ...........')
+        /* pega todos os filhos */
+        console.log('childNodes', lista.childNodes)
+
+        console.log('destino', lista.id)/* Acessa normalmente */
+        /* console.log('destino', lista.destino)==> não é possivel acessar porque é uma propriedade personalizada browser não conhece */
+        /* usando o getAttribute não tem problema */
+        console.log('getAttribute', lista.getAttribute('destino'))
+        /* para saber se um atributo esta ou não dentro de um elemento */
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        /* para alterar o valor de um atributo */
+        lista.setAttribute('destino', 'empresa')
+        /* adicionando uma tributo */
+        lista.setAttribute('status', 'aberto')
+        /* metodo para remover  */
+        lista.removeAttribute('destino')
+        /* atributos marcados com data- (não é muito usado) são tratados ligeiramente diferentes */
+        /* acessando o valor da urgencia */
+        console.log(lista.dataset.urgencia)
+        /* alterando o valor da urgencia */
+        lista.dataset.urgencia = 4
+        /* no caso do get atribute eu tenho que acessar o nome do parametro completo */
+        console.log(lista.getAttribute('data-urgencia'))
+
+            /* cuidados */
+        /* nem sempre o atributo que esta definido no html estara disponivel
+        para acessar com o mesmo nome */
+
+        /* selecionando o label */
+        const label = document.querySelector('label')
+        /* tentando acessar o atributo for */
+        console.log(label.for) /* não da */
+        /* para acessar o for pela notação ponto */
+        console.log(label.htmlfor)
+        /* ou pode ser acessado pelo getAtribute */
+        console.log(label.getAttribute('for'))/* se colocar o htmlForm retorna nulo */
+    </script>
+</body>
+
+</html>
+
+                    <!-- RESUMO -->
+
+<!-- CHILD NODES ==> PEGA TODOS OS FILHOS 
+PARA ACESSAR PROPRIEDADES PERSONALIZADAS SOMENTE COM O GET ATTRIBUTE
+HAS ATRIBUTE ==> PARA VER SE UM ATRIBUTO ESTA DENTRO OU NÃO DE UM ELEMENTO
+SET ATRIBUTE ==> PARA TROCAR O VALOR DE UM ATRIBUTO
+REMOVE ATRIBUTE ==> PARA REMOVER O ATRIBUTO 
+
+atributos marcados com data- (não é muito usado) são tratados ligeiramente diferentes
+-->

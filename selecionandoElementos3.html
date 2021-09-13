@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    
+    <!-- 
+        FORM TEM NAME E OS INPUTS TAMBÉM TEM NAME
+     -->
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        /* uma das formas de selecionar os formularios e com document.forms 
+        (traz um array de todos os formularios to tipo htmlColectiion*/
+        console.log(document.forms)
+        /* para acessar cada form pelo indice */
+        console.log(document.forms[0])
+        /* usando name para obter os formularios e os inputs desse formulario (PELO NOME)*/
+        console.log(document.getElementsByName('pesquisa'))/* TRAZ UM NODE LIST */
+        console.log(document.getElementsByTagName('form'))/* TRAZ UM HTML COLLECTION */
+        
+        /* ira retornar o formulario cujo o name é pesquisa */
+        console.log(document.pesquisa)
+        /* entrou dentro do input pesquisa e pegou o input cujo o name é p */
+        console.log(document.pesquisa.q)
+
+        /* é possivel alterar um input dessa mesma maneira */
+        document.pesquisa.q.value = 'Linux Brasil' /* vai alterar o texto do formulario para pesquisar linux Brasil */
+        /* posso tambem mecher em um valor do select */
+        document.pesquisa.hl.value = 'en-us'
+        /* vai me dizer qual o index que esta selecionado */
+        console.log(document.pesquisa.hl.selectedIndex)
+    </script>
+</body>
+ler ou alterar o campo
+</html>
+                        <!-- RESUMO -->
+<!-- q e hl são parametros que o google suporta, (NÃO SÃO ALEATÓRIOS) 
+    HL ==> HOST LANGUAGE (LIGUAGEM QUE ESTA FAZENDO A PESQUISA) 
+    Q ==> Parametros
+-->
+<!-- Formas de selecionar um formulario com document.form 
+VAI ME RETORNAR UM HTML COLLECTION COM TODOS OS FORMULARIOS 
+Posso acessar os formularios pelos indices (document.form[0])
+Posso pegar os inputs PELO NOME COM document.getElementByName('nameDoInput') RETORNA UMA NODE LIST
+OU document.getElementByTagName('nameDoInput') RETORNA UM HTML COLLECTION
+-->
+<!-- POSSO ACESSAR UM FORMULARIO PELA NOTAÇÃO PONTO
+E POSSO FAZER ALTERAÇÕES  -->
+
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        /* FORMA DE ACESSAR ATRIBUTOS PERSONALIZADOS PELA NOTAÇÃO PONTO */
+        const lista = document.querySelector('#compras')
+        /* SOMENTE VAI SER POSSÍVEL LER E NÃO ALTERAR */
+        /* pega todos os atributos dentro de uma lista */
+        console.log(lista.attributes)
+        /* pegando o elemento pelo indice */
+        console.log(lista.attributes[0])
+        /* pegando o elemento pela notação ponto */
+        console.log(lista.attributes.destino)
+        /* pegando o elemento pelos colchetes */
+        console.log(lista.attributes['data-urgencia'])
+
+    </script>
+</body>
+
+</html>

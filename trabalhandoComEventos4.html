@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #04</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+                <option value="pt-br">Português (Brasil)</option>
+                <option value="en-us">Inglês (Americano)</option>
+            </select>
+        <button wm-submit>Pesquisar</button>
+    </form>
+    <script>
+        
+        /* INTERCEPTAR UM EVENTO DE SUBMIT DO USUARIO 
+        Selecionando o botao  
+        const submit = document.querySelector('[wm-submit]')
+         quando eu clicar no botao 
+        submit.onclick = function(e) {
+            /* para o comportamento padrão 
+            e.preventDefault()
+            /* para ter os elementos do formulario 
+            const formulario = e.target.parentNode e.target no caso é o botão ||parent node é quem esta envolvendo o botao no caso é o formulario 
+            const formData = new FormData(formulario)
+            /* adicionando uma nova informação 
+            formData.append('ajax',true)
+            console.log(formData.get('q'))/* vai pegar o valor que eu digitar no campo */
+            /* para ver se um campo esta ou não contido 
+            console.log(formData.has('hl'))
+            /* formData tambem tem um iterator associado 
+            for (let dados of formData) {
+                console.log(dados)
+            }
+        } /*  */
+
+        /* OUTRA FORMA DE FAZER */
+        /* PEGANDO PELO EVENTO ON SUBMIT */
+        const form = document.forms[0]/* pegando o primeiro (e unico) formulario */
+        form.onsubmit = function (e) {
+            e.preventDefault()
+
+            const form = e.target /* form passa a ser o e.target */
+            const formData = new FormData(form)
+            formData.append('ajax', true)
+            console.log(formData.get('q'))
+            console.log(formData.has('hl'))
+
+            /* pegando todos os elementos do formulario */
+            for (let dados of formData) {
+                console.log(dados)
+            }
+        }   
+
+    </script>
+</body>
+
+
+
+<!-- eventos vistos
+
+onclick clique do mouse
+gragginDrop mover algum elemento -->

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        /* a partir de um elemento achar outros elementos */
+        function log() {
+            console.log(this)
+        }
+
+        /* todas essas funções quando eu chamar vai aparecer no console */
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log/* get element by id retorna um ELEMENT */
+        NodeList.prototype.log =log
+        Node.prototype.log = log
+        
+        /* vou pegar uma div que tem uma ul */
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log()/* função log só esta disponivel porque eu fiz ela anteriormente */
+        /* lista de nós que seriam as 3 li( vai pegar os 3 li e 4 textos 
+        por conta do espaço, se retirar os espaços some o texto*/
+        lista.childNodes.log()
+
+        /* pegando o primeiro elemento da lista */
+        const primeiro = lista.firstChild/* é do tipo texto */
+        primeiro.log()/* vai ser um elemto do tipo textual */
+        /* vamos selecionar o proximo elemento, depois do primeiro */
+        primeiro.nextSibling.log()
+        /* pegando o ultimo elemento */
+        const ultimo = lista.lastChild
+        ultimo.log()/* é do tipo texto */
+        /* para pegar um elemento anterior */
+        ultimo.previousSibling.log()
+
+        /* para pegar todos os filhos */
+        lista.children.log()/* não vem textos, só as lis, VEM COM HTML COLLECTION */
+        lista.firstElementChild.log()/* traz o primeiro elemento de fato, TRAZ A PRIMEIRA TAG DEFINIDA DE FATO */
+        lista.lastElementChild.log()/* TRAZ O ULTIMO ELEMENTO DE FATO */
+        /* misturando funções */
+        /* me de o elemento anterior ao parent  da lista
+        a lista é a ul
+        parent node seria a div que esta envolvendo a ul
+        elemento irmao anterior seria a div que vem antes*/
+        lista.parentNode.previousElementSibling.log()
+        /* pegando o proximo elemento depois da div */
+        lista.parentNode.nextElementSibling.log()/* vai pegar o fim */
+        
+        /* A FORMA MAIS IDEAL É VOCÊ PEGAR O QUE QUER DIRETAMENTE */
+        document.querySelectorAll('div ul li').log()
+    </script>
+</body>
+
+</html>
+
+                    <!-- RESUMO -->
+<!-- CHILD NODES RETORNA TEXTOS NO MEIO DO RESULTADO
+CHILDREN ==> NÃO TRAZ OS TEXTOS, SÓ TRAZ OS ELEMENTOS QUE FORAM DEFINIDOS
+IMPLEMENTAMOS A FUNÇÃO LOG PARA IMPRIMIR MAIS FACILMENTE
+
+lista.firstChild ==> PEGA O PRIMEIRO ELEMENTO COM TEXTOS
+primeiro.nextSibling ==> PEGA O PRÓXIMO ELEMENTO
+lista.lastChild ==> PEGA O ULTIMO ELEMENTO
+lista.children ==> NÃO VEM TEXTOS, SÓ OS ELEMENTOS EM SI
+-->

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <a href='https://www.cod3r.com.br'>Cod3r</a>
+    </div>
+    <div id='primeiro'>
+        <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
+    </div>
+    <script>
+        /* selecionando a imagem */
+        const img = document.querySelector('img')
+        
+            /* ACESSANDO OS ATRIBUTOS DA IMAGEM */
+        /* acessando os atributos da imagem */
+        console.log('getAttribute', img.getAttribute('src'))
+        /* outra forma da acessar o src */
+        console.log('src', img.src)
+        /* outra forma mais resumida */
+        console.log('["src"]', img['src'])
+        /* acessando outros atributos */
+        console.log('alt', img.alt)
+
+    /* ACESSANDO AS PROPRIEDADES E ELEMENTOS DOS ATRIBUTOS */
+        /* elementos e propriedades que tem atributos implicitos */
+        console.log('Elemento "img".............')
+        /* todos as propriedades e elementos tem NodeType */
+        console.log('NodeType', img.nodeType)/* resultado 1, significa que é do tipo ELEMENTO*/
+        /* NODETYPE 1 ==> ELEMENTO
+           NODETYPE 2 ==> ATRIBUTO 
+           link com os demais 
+           https://www.w3schools.com/jsref/prop_node_nodetype.asp*/
+        
+        /*Acessando o nome do elemento( foi definido na linha 19) */
+        console.log('NodeName', img.nodeName)
+
+        /* vai me dar o no que representa aquele atributo */
+        /* pegando o src da imagem 
+        no seria o atributo (no caso img)*/
+        const src = img.getAttributeNode('src')
+        console.log('Atributo "src" ............')
+        /* pegando o tipo */
+        console.log('NodeType', src.nodeType)
+        /* pegando o nome do atributo */
+        console.log('NodeName', src.nodeName)
+        /* pegando o valor do atributo */
+        console.log('NodeValue', src.nodeValue)
+
+        /* NÃO VAI SER TRABALHADAS COM PROPRIEDADES PERSONALIZADAS NESSA AULA */
+        /* Pegando o link */
+        const link = document.querySelector('a')
+        console.log('Elemento "a" --------------')
+        /* acessando os atributos do link */
+        /* link que esta dentro do href */
+        console.log('href',link.href )
+        /* a partir de um elemento pegar o filho daquele elemento */
+        console.log('firstChild.nodeType', link.firstChild.nodeType)/* retorna um elemento textual (tipo 3) */
+        /* para alterar */
+        /* dentro do texto que eu peguei estou pegando o primeiro filho e alterando o valor do meu texto */
+        link.firstChild.nodeValue = 'Novo texto'
+    </script>
+</body>
+
+</html>
+
+                    <!-- RESUMO -->
+<!-- SELECIONAMOS A IMAGEM COM document.querySelector('img') 
+depois da imagem selecionada acessamos os atributos, que tem
+várias maneiras de acessar como por exemplo: 
+"img.src" ==> acessando o src da imagem-->
+
+<!-- SELECIONANDO OS ELEMENTOS E PROPRIEDADES DA TAG IMG
+nodeType ==> retorna o tipo do atributo (um valor numérico)
+https://www.w3schools.com/jsref/prop_node_nodetype.asp*/
+
+nodeName ==> Retorna o nome
+nodeValue ==> retorna o valor
+childNodes ==> retorna todos os filhos
+
+POSSO ALTERAR O VALOR DO NODE VALUE
+
+-->

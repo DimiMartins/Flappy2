@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <!-- quando acontecer o evento do clique invoque essa função passando o evento como parametro -->
+    <div><!-- linkando a função, preciso chamar de event mesmo -->
+        
+        <!-- onclick='navegarEm5s(event)' -->
+        <a espera-um-pouco href="https://google.com.br">Google</a>
+    </div>
+    <script>
+        /* PRIMEIRA POSSIBILIDAE interceptar o clique do mouse */
+        function navegarEm5s(e) {
+            e.preventDefault()
+            console.log('Saindo em 5 segudos')
+            setTimeout(() => {
+                /* target => elemento do html que disparou o evento, e.target é O PRÓPRIO LINK*/
+                const link = e.target
+                /* estou substituindo o endereço da barra do browser */
+                window.location.href = link.href 
+            }, 5000);
+        }
+        /* SEGUNDA POSSIBILIDADE */
+        /* pegguei o link */
+        /* const a = document.querySelector('a')
+        a.onclick = navegarEm5 */
+
+
+        /* TERCEIRA POSSIBILIDADE (A IDEAL) */
+        /* O BROWSER IGNORA OS ATRIBUTOS PERSONALIZADOS POR ISSO É IDEAL PARA
+        MARCAR UMA TAG QUE VAI SER USADA EM JS */
+        
+        /* usando propriedades personalizadas */
+        const a = document.querySelector('[espera-um-pouco]')
+        a.onclick = navegarEm5s
+    </script>
+</body>

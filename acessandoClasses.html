@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Classes</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        Classes
+    </div>
+    <script>
+        const div = document.querySelector('div')
+        const classes = div.classList
+        /* classList ==> vou pegar a lista de classes desse elemento */
+        /* a partir do classList eu consigo adicionar remover ... */
+        /* acessando classes */
+        classes.add('destaque')/* destaque esta dentro do import css/estilo */
+        classes.remove('destaque')/* removendo a classe destaque */
+        classes.toggle('destaque')/* adiciona se não tiver e remove caso tenha */
+        /* vereficando se uma classe esta contida ou não  */
+        console.log(classes.contains('destaque'))
+        console.log(classes.length)/* quantidade de classes que um elemento tem */
+        classes.toggle('destaque')/* nesse caso ele vai remover */
+        console.log(classes.length)/* quantidade vai ser 0 */
+
+        classes.add('destaque1')
+        classes.add('destaque2')
+        console.log(classes.length)
+
+        for (let c of classes) {
+            console.log(c)
+        }
+        /* posso fazer um foreach nas classes */
+        classes.forEach(c => console.log(c))
+
+
+    </script>ic
+</body>
+
+</html>
